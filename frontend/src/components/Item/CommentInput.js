@@ -11,7 +11,7 @@ const mapDispatchToProps = (dispatch) => ({
  
 
 const CommentInput = (props) => {
-  const [body, setBody] = useState('')
+  const [body, setBody] = useState("")
 
   const handleInputChange = (ev) => {
     setBody(ev.target.value );
@@ -20,7 +20,7 @@ const CommentInput = (props) => {
   const createComment = async (ev) => {
     ev.preventDefault();
     agent.Comments.create(props.slug, {
-      body
+      body:body,
     }).then((payload) => {
       props.onSubmit(payload);
     });
@@ -28,7 +28,7 @@ const CommentInput = (props) => {
   };
 
   return (
-      <form>
+      <form className="card comment-form m-2" onSubmit={createComment}>
         <div className="card-block">
           <textarea
             className="form-control"
